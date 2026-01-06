@@ -2,17 +2,17 @@ name: Backend CI
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
-  build: 
-    runs_on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-  steps:
-     - name: Checkout code
-       uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-     - name: Build Docker Image
-       uses: docker build -t mood-to-meal-backend .
+      - name: Build Docker image
+        run: docker build -t mood-to-meal-backend .
