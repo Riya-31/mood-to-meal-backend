@@ -1,0 +1,23 @@
+#“I am defining containers that will run together.”
+services:
+#service name -This is just a name, not technical.
+  backend-api:
+
+
+  #connect docker compose to docker file   
+    build: .
+
+
+  # host and container port 
+  #left-what you type in browser right- where node listen
+    ports:
+      - "3003:3003"
+
+
+  #“Load environment variables from .env into the container.”
+    env_file:
+      - .env
+
+
+      #“If container crashes, restart it automatically.”
+    restart: always
