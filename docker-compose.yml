@@ -9,7 +9,7 @@ services:
 
 
   # host and container port 
-  #left-what you type in browser right- where node listen
+  #left-what you type in browser, right- where node listen
     ports:
       - "3003:3003"
 
