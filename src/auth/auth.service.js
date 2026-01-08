@@ -17,7 +17,14 @@ const generateToken = (user) => {  //this function generate signed token
 };
 
 
-const signup = async({name,email,password})=>{
+const signup = async({ 
+    name,
+  email,
+  password,
+  foodPreference,
+  allergies,
+  city,
+  timezone,})=>{
     const existingUser = await User.findOne({email});
     if(existingUser){
         throw new Error("User already registered with us")
@@ -30,6 +37,10 @@ const signup = async({name,email,password})=>{
         name,
         email,
         passwordHash,
+         foodPreference,
+    allergies,
+    city,
+    timezone,
     })
 
     return{
