@@ -11,8 +11,20 @@ const moodLogSchema = new mongoose.Schema(
     mood: {
       type: String,
       required: true,
-      enum: ["happy", "stressed", "bored", "tired", "low", "sad"],
+      enum: ["happy", "stressed", "bored", "tired", "sad", "calm"],
     },
+    moodSource: {
+      type: String,
+      enum: ["user", "rule", "ai"],
+      default: "user",
+    },
+
+     confidence: {
+      type: Number,
+      min: 0,
+      max: 1,
+    },
+
 
     cravingType: {
       type: String,
@@ -39,12 +51,10 @@ const moodLogSchema = new mongoose.Schema(
 
     userNote: String,
 
-    aiDetectedMood: String,
-    aiConfidence: Number,
   },
   { timestamps: true }
 );
 
-moodLogSchema.index({userId:1,createdAt:-1});
+moodLogSchema.index({ userId: 1, createdAt: -1 });
 
 module.exports = mongoose.model("MoodLog", moodLogSchema);
