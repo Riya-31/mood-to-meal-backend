@@ -13,6 +13,10 @@ const foodItemSchema = new mongoose.Schema(
       enum: ["snack", "meal", "drink"],
       required: true,
     },
+    priority: {
+      type: Number,
+      default: 1,
+    },
 
     tags: [String],
 
