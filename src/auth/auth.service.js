@@ -4,7 +4,7 @@ const User = require("../models/user");
 
 const generateToken = (user) => {
   //this function generate signed token
-  return  jwt.sign(   
+  return jwt.sign(
     {
       userId: user._id,
       role: user.role, //  payload
@@ -12,7 +12,7 @@ const generateToken = (user) => {
 
     process.env.JWT_SECRET, //secret key
     {
-      expiresIn: process.env.JWT_EXPIRES_IN || "15m", //option object
+      expiresIn: process.env.JWT_EXPIRES_IN || "30d", //option object
     }
   );
 };
@@ -65,7 +65,7 @@ const login = async ({ email, password }) => {
   }
 
   const token = generateToken(user);
-  console.log("token", token);
+  // console.log("token", token);
 
   return {
     token,

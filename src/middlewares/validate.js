@@ -1,5 +1,11 @@
 exports.validate = (schema) => (req, res, next) => {
-  const { error } = schema.validate(req.body, {
+  Object.keys(req.body).forEach((key) => {
+    if (req.body[key] === "") {
+      delete req.body[key];
+    }
+  });
+
+  const { error, value } = schema.validate(req.body, {
     abortEarly: false,
     stripUnknown: true,
   });
@@ -10,6 +16,6 @@ exports.validate = (schema) => (req, res, next) => {
       errors: error.details.map((d) => d.message),
     });
   }
-
+  req.body = value;
   next();
 };

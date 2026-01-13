@@ -48,6 +48,7 @@ const detectMoodFromText = (text) => {
   // BORED
   if (
     lowerText.includes("bored") ||
+    lowerText.includes("alone") ||
     lowerText.includes("nothing to do") ||
     lowerText.includes("fed up")
   ) {

@@ -7,10 +7,20 @@ const foodItemSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+        description: String,
+
+    price: {
+      type: Number,
+      required: true,
+    },
+     image: {
+      type: String, // URL (Cloudinary / S3)
+      required: true,
+    },
 
     category: {
       type: String,
-      enum: ["snack", "meal", "drink"],
+      enum: ["snack", "meal", "drink","dessert"],
       required: true,
     },
     priority: {
@@ -18,12 +28,16 @@ const foodItemSchema = new mongoose.Schema(
       default: 1,
     },
 
-    tags: [String],
+     suitableMoods: [
+      {
+        type: String,
+        enum: ["happy", "stressed", "bored", "tired", "sad", "calm"],
+      },
+    ],
 
-    suitableMoods: [String],
+    tags: [String], // "sweet", "healthy", "comfort"
 
     calories: Number,
-
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

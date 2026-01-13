@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 
-const authRoutes= require("./auth/auth.routes")
+const authRoutes = require("./auth/auth.routes");
+const moodRoutes = require("./routes/moodRoutes");
 
 const app = express();
 
@@ -15,7 +16,8 @@ app.use(
 
 app.use(express.json());
 
-app.use("/api/auth",authRoutes)
+app.use("/api/auth", authRoutes);
+app.use("/api/mood", moodRoutes);
 
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok", service: "Abhi ham jinda hai" });

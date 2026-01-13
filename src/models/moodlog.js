@@ -25,7 +25,6 @@ const moodLogSchema = new mongoose.Schema(
       max: 1,
     },
 
-
     cravingType: {
       type: String,
       enum: ["sweet", "spicy", "light", "heavy", "healthy"],
@@ -41,7 +40,6 @@ const moodLogSchema = new mongoose.Schema(
     actionType: {
       type: String,
       enum: ["ate", "craving"],
-      required: true,
     },
 
     foodItemId: {
